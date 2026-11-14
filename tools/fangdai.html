@@ -271,5 +271,49 @@ calc();
   "publisher": {"@type": "Organization", "name": "实用工具箱"}
 }
 </script>
+
+<section id="faq" style="max-width:860px;margin:34px auto;padding:0 16px;font-family:inherit">
+  <h2 style="font-size:20px;margin:0 0 14px">常见问题</h2>
+  <style>
+    .faq-item{border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin-bottom:10px;background:#fff}
+    .faq-item summary{cursor:pointer;font-weight:600;color:#1d4ed8;list-style:none}
+    .faq-item p{margin:10px 0 2px;color:#374151;line-height:1.7}
+  </style>
+    <details class="faq-item"><summary>等额本息和等额本金哪个更省利息？</summary><p>等额本金的总利息更少，因为它前期归还的本金多、计息本金下降更快；代价是前期月供更高。等额本息每月还款额固定，方便做长期预算。以默认 100 万元、30 年、年利率 3.3% 为例，等额本息的月供约 4380 元。</p></details>
+    <details class="faq-item"><summary>提前还款选缩短年限还是减少月供？</summary><p>想少付利息更多，选缩短年限（计息时间变短）；想降低每月压力，选减少月供。多数房贷合同对提前还款的次数、最低金额和违约金有约定，办理前先确认合同条款。</p></details>
+    <details class="faq-item"><summary>计算结果按 LPR 还是固定利率？</summary><p>按你填写的年利率静态计算，不预测后续 LPR 调整。若利率会随 LPR 浮动，可以用调整后的利率再算一次，对比两种情况的总利息差额。</p></details>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "等额本息和等额本金哪个更省利息？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "等额本金的总利息更少，因为它前期归还的本金多、计息本金下降更快；代价是前期月供更高。等额本息每月还款额固定，方便做长期预算。以默认 100 万元、30 年、年利率 3.3% 为例，等额本息的月供约 4380 元。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "提前还款选缩短年限还是减少月供？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "想少付利息更多，选缩短年限（计息时间变短）；想降低每月压力，选减少月供。多数房贷合同对提前还款的次数、最低金额和违约金有约定，办理前先确认合同条款。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "计算结果按 LPR 还是固定利率？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "按你填写的年利率静态计算，不预测后续 LPR 调整。若利率会随 LPR 浮动，可以用调整后的利率再算一次，对比两种情况的总利息差额。"
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>

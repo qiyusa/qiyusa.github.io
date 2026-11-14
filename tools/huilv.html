@@ -373,5 +373,49 @@ setInterval(loadRT,30000);
   "publisher": {"@type": "Organization", "name": "实用工具箱"}
 }
 </script>
+
+<section id="faq" style="max-width:860px;margin:34px auto;padding:0 16px;font-family:inherit">
+  <h2 style="font-size:20px;margin:0 0 14px">常见问题</h2>
+  <style>
+    .faq-item{border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin-bottom:10px;background:#fff}
+    .faq-item summary{cursor:pointer;font-weight:600;color:#1d4ed8;list-style:none}
+    .faq-item p{margin:10px 0 2px;color:#374151;line-height:1.7}
+  </style>
+    <details class="faq-item"><summary>汇率是实时更新的吗？</summary><p>数据来自公开行情接口，交易时段内会随行情刷新；非交易时段显示最近一次报价，仅供参考。</p></details>
+    <details class="faq-item"><summary>为什么和银行换汇的价格不一样？</summary><p>这里显示的是市场参考报价，银行结汇、购汇会在此基础上加点差，实际成交价以银行柜台或手机银行的牌价为准。</p></details>
+    <details class="faq-item"><summary>为什么查不到泰铢、韩元这类货币？</summary><p>工具覆盖有直盘报价的主要货币，泰铢、韩元等小币种需要用美元做交叉换算，结果会存在一定误差。</p></details>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "汇率是实时更新的吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "数据来自公开行情接口，交易时段内会随行情刷新；非交易时段显示最近一次报价，仅供参考。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么和银行换汇的价格不一样？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "这里显示的是市场参考报价，银行结汇、购汇会在此基础上加点差，实际成交价以银行柜台或手机银行的牌价为准。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么查不到泰铢、韩元这类货币？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "工具覆盖有直盘报价的主要货币，泰铢、韩元等小币种需要用美元做交叉换算，结果会存在一定误差。"
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>

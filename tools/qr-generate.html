@@ -173,5 +173,49 @@ document.getElementById('downloadBtn').onclick=()=>{
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://caisuanbao.com/"},{"@type":"ListItem","position":2,"name":"二维码生成器","item":"https://caisuanbao.com/tools/qr-generate"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"二维码生成器","description":"免费在线生成文本/网址/WiFi/名片二维码，可调颜色尺寸，支持下载。","url":"https://caisuanbao.com/tools/qr-generate","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"实用工具箱"}}</script>
+
+<section id="faq" style="max-width:860px;margin:34px auto;padding:0 16px;font-family:inherit">
+  <h2 style="font-size:20px;margin:0 0 14px">常见问题</h2>
+  <style>
+    .faq-item{border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin-bottom:10px;background:#fff}
+    .faq-item summary{cursor:pointer;font-weight:600;color:#1d4ed8;list-style:none}
+    .faq-item p{margin:10px 0 2px;color:#374151;line-height:1.7}
+  </style>
+    <details class="faq-item"><summary>生成的二维码会过期或失效吗？</summary><p>不会。二维码的内容直接编码在图案里，不依赖任何服务器或短链服务，本地保存的图片长期有效。</p></details>
+    <details class="faq-item"><summary>内容太长会不会扫不出来？</summary><p>会。内容越长图案越密，对扫码设备和打印精度要求越高；网址建议控制在 100 个字符以内，纯文本建议 300 字以内，超长内容建议先缩短。</p></details>
+    <details class="faq-item"><summary>生成的二维码可以商用吗？</summary><p>可以。工具生成的二维码本身没有版权限制，可用于海报、名片、包装等商业场景，但内容本身仍需符合相关法规。</p></details>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "生成的二维码会过期或失效吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不会。二维码的内容直接编码在图案里，不依赖任何服务器或短链服务，本地保存的图片长期有效。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "内容太长会不会扫不出来？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "会。内容越长图案越密，对扫码设备和打印精度要求越高；网址建议控制在 100 个字符以内，纯文本建议 300 字以内，超长内容建议先缩短。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "生成的二维码可以商用吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。工具生成的二维码本身没有版权限制，可用于海报、名片、包装等商业场景，但内容本身仍需符合相关法规。"
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>
