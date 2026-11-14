@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>工资个税计算器 2026｜税后到手工资、专项附加扣除 - 实用工具箱</title>
+<meta name="description" content="2026 年工资个人所得税计算器：输入税前工资、五险一金和专项附加扣除，按现行税率表和速算扣除数计算每月应缴个税与到手工资，免费在线使用。">
+<link rel="canonical" href="https://caisuanbao.com/tools/geshui">
+<link rel="stylesheet" href="../css/style.css">
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="工资个税计算器 2026｜税后到手工资、专项附加扣除 - 实用工具箱">
+<meta property="og:description" content="2026 年工资个人所得税计算器：输入税前工资、五险一金和专项附加扣除，按现行税率表和速算扣除数计算每月应缴个税与到手工资，免费在线使用。">
+<meta property="og:url" content="https://caisuanbao.com/tools/geshui">
+<meta property="og:image" content="https://caisuanbao.com/og-image.jpg">
+<meta property="og:site_name" content="实用工具箱">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="工资个税计算器 2026｜税后到手工资、专项附加扣除 - 实用工具箱">
+<meta name="twitter:description" content="2026 年工资个人所得税计算器：输入税前工资、五险一金和专项附加扣除，按现行税率表和速算扣除数计算每月应缴个税与到手工资，免费在线使用。">
+<meta name="twitter:image" content="https://caisuanbao.com/og-image.jpg">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="../index.html">
+      <span class="logo-badge">算</span>
+      <span>实用工具箱<small>免费在线实用工具</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="fangdai">房贷计算</a>
+      <a href="geshui">个税计算</a>
+      <a href="https://caisuanbao.com/tools/shebao">五险一金</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="crumb"><a href="../index.html">首页</a> / 工资个税计算器</div>
+  <div class="tool-head">
+    <h1>工资个税计算器</h1>
+    <p>按现行 5000 元起征点和七级税率表，估算每月应缴个税与税后到手工资</p>
+  </div>
+
+  <section class="ai-answer" style="margin:18px 0 22px;padding:16px 18px;border-radius:10px;background:#f0f7ff;border-left:4px solid #2b6cb8">
+    <h2 style="margin:0 0 8px;font-size:17px">月薪1万要交多少个税？</h2>
+    <p style="margin:0;line-height:1.8"><b>月薪1万、五险一金2400元、专项附加扣除2000元时，每月个税约18元；若无专项附加扣除、五险一金约1600元，每月约130元</b>。应纳税所得额=税前工资−5000元起征点−五险一金−专项附加扣除，填报子女教育、房贷利息等扣除可进一步降税。</p>
+  </section>
+
+  <div class="tool-layout">
+    <div>
+      <div class="panel">
+        <div class="form-row">
+          <label>税前月工资</label>
+          <div class="input-suffix"><input type="number" id="salary" value="15000" min="0" step="100"><span class="unit">元</span></div>
+        </div>
+        <div class="two-col">
+          <div class="form-row">
+            <label>个人缴纳五险一金 <span class="hint">（每月）</span></label>
+            <div class="input-suffix"><input type="number" id="insurance" value="2400" min="0" step="10"><span class="unit">元</span></div>
+          </div>
+          <div class="form-row">
+            <label>专项附加扣除 <span class="hint">（每月合计）</span></label>
+            <div class="input-suffix"><input type="number" id="special" value="2000" min="0" step="100"><span class="unit">元</span></div>
+          </div>
+        </div>
+        <button class="btn" id="calcBtn">计算到手工资</button>
+
+        <div class="result-box" id="result">
+          <div class="result-main">
+            <div class="k">税后到手工资（每月）</div>
+            <div class="v"><span id="takeHome">0</span> <small>元</small></div>
+          </div>
+          <div class="kv-list">
+            <div class="kv"><span class="k">应纳税所得额</span><span class="v" id="taxable">0 元</span></div>
+            <div class="kv"><span class="k">适用税率</span><span class="v" id="rate">—</span></div>
+            <div class="kv"><span class="k">应缴个税</span><span class="v" id="tax">0 元</span></div>
+            <div class="kv"><span class="k">速算扣除数</span><span class="v" id="quick">0 元</span></div>
+          </div>
+          <div class="note">
+            本工具按<b>月度口径估算</b>：应纳税所得额 = 税前工资 − 5000 元起征点 − 五险一金个人部分 − 专项附加扣除。<br>
+            工资薪金实际执行「累计预扣法」，按年累计计算，因此年初几个月扣税少、年末可能变多，全年合计与按月估算可能略有差异；年终奖请使用 <a href="jiangjin">年终奖计算器</a> 单独计算。
+          </div>
+        </div>
+      </div>
+
+      <section class="richtext">
+        <h2>专项附加扣除包括哪些？</h2>
+        <ul>
+          <li><b>子女教育</b>：每个子女每月 2000 元；</li>
+          <li><b>3 岁以下婴幼儿照护</b>：每个婴幼儿每月 2000 元；</li>
+          <li><b>继续教育</b>：学历教育每月 400 元，职业资格取证当年 3600 元；</li>
+          <li><b>住房贷款利息</b>：首套房贷每月 1000 元，最长 240 个月；</li>
+          <li><b>住房租金</b>：按城市规模每月 1500 / 1100 / 800 元（与房贷利息只能二选一）；</li>
+          <li><b>赡养老人</b>：每月最高 3000 元；<b>大病医疗</b>：年度限额 8 万元据实扣除。</li>
+        </ul>
+        <h2>个人所得税税率表（月度口径）</h2>
+        <p>3000 元以下 3%；3000–12000 元 10%（速扣 210）；12000–25000 元 20%（速扣 1410）；25000–35000 元 25%（速扣 2660）；35000–55000 元 30%（速扣 4410）；55000–80000 元 35%（速扣 7160）；80000 元以上 45%（速扣 15160）。</p>
+      </section>
+
+      <section class="richtext" style="max-width:760px;margin:2rem auto;padding:0 1rem">
+        <h2 class="section-title">常见问题</h2>
+        <div class="faq-list">
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">月薪1万扣多少税？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">按税前1万、五险一金约1600元、无专项附加扣除测算：应纳税所得额=10000−5000−1600=3400元，适用10%税率、速扣210元，每月应缴个税=3400×10%−210=130元，税后到手约8270元。若有2000元专项附加扣除（如房租、子女教育），应纳税所得额降至1400元、税率降为3%，个税仅约42元、到手约8358元。可在上方计算器填入实际数字测算。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">个税起征点是多少？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">目前工资薪金个人所得税起征点（基本减除费用）为每月5000元，即每年6万元。应纳税所得额=税前工资−5000−五险一金个人部分−专项附加扣除。按本工具默认参数（月薪1.5万、五险一金2400、专项附加2000）：应纳税所得额=15000−5000−2400−2000=5600元，适用10%税率，每月应缴个税约350元、到手约12250元。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">专项附加扣除有哪些？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">共7项：子女教育（每个子女每月2000元）、3岁以下婴幼儿照护（每个每月2000元）、继续教育（学历每月400元、职业资格取证当年3600元）、住房贷款利息（首套房贷每月1000元、最长240个月）、住房租金（每月1500/1100/800元，与房贷利息二选一）、赡养老人（每月最高3000元）、大病医疗（年度限额8万元据实扣除）。在「个人所得税」App填报后单位发工资时自动扣除。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">年终奖怎么扣税？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">年终奖可在2027年底前选择单独计税或并入综合所得。单独计税时，年终奖÷12找适用税率，再按奖金总额×税率−速扣数计算。如年终奖3万元：30000÷12=2500元，适用3%税率、速扣0，应缴税=30000×3%=900元。10万元年终奖：100000÷12=8333元，适用10%税率、速扣210，应缴税=100000×10%−210=9790元。可用<a href="jiangjin">年终奖计算器</a>精确测算。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">社保公积金算不算个税？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">五险一金个人缴纳部分在计算个税时可以扣除，不计入应纳税所得额。即应纳税所得额=税前工资−5000−五险一金个人部分−专项附加扣除。例如月薪1.5万、五险一金2400元：不计社保时应纳税所得额=10000元、个税约790元；扣除社保后应纳税所得额=7600元、个税约550元，每月少交约240元。单位缴纳部分不在扣除范围。</p>
+          </details>
+        </div>
+      </section>
+
+      <h2 style="margin:26px 0 4px;font-size:18px">相关工具</h2>
+      <div class="related">
+        <a href="geshui-shuilv">2026年个税税率表（速查） →</a>
+        <a href="zhuanxiang">专项附加扣除计算器 →</a>
+        <a href="jiangjin">年终奖个税计算器 →</a>
+        <a href="laowu">劳务报酬个税计算器 →</a>
+        <a href="gaochou">稿酬个税计算器 →</a>
+        <a href="jingying">经营所得个税计算器 →</a>
+        <a href="lizhi">离职补偿金个税计算器 →</a>
+        <a href="https://caisuanbao.com/tools/shebao">五险一金计算器 →</a>
+      </div>
+    </div>
+
+    <aside class="side">
+      </aside>
+  </div>
+
+  </main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fcol"><b>实用工具箱</b><span style="display:block;max-width:260px">免费、免注册的在线实用工具集合。</span></div>
+      <div class="fcol"><b>贷款工具</b><a href="fangdai">房贷计算器</a><a href="tiqian">提前还款</a><a href="chedai">车贷计算器</a><a href="gongjijin">公积金额度</a><a href="zuhedai">组合贷款</a><a href="xinyongka">信用卡分期</a></div>
+      <div class="fcol"><b>工资税费</b><a href="geshui">个税计算器</a><a href="zhuanxiang">专项附加扣除</a><a href="laowu">劳务报酬</a><a href="gaochou">稿酬个税</a><a href="jingying">经营所得</a><a href="lizhi">离职补偿金</a><a href="jiangjin">年终奖</a><a href="https://caisuanbao.com/tools/shebao">五险一金</a></div>
+      <div class="fcol"><b>理财工具</b><a href="fuli">复利定投</a><a href="cunkuan">存款利息</a><a href="huoqi">活期/通知存款</a><a href="zhenshililv">真实年利率</a><a href="lilvhuansuan">利率换算</a><a href="zujinhuibaolv">租金回报率</a><a href="zulin">租金换算</a></div>
+    </div>
+    <div class="copy">© 2026 实用工具箱 · 计算结果仅供参考</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "月薪1万扣多少税？",
+      "acceptedAnswer": {"@type": "Answer", "text": "按税前1万、五险一金约1600元、无专项附加扣除测算：应纳税所得额=10000−5000−1600=3400元，适用10%税率、速扣210元，每月应缴个税=3400×10%−210=130元，税后到手约8270元。若有2000元专项附加扣除，应纳税所得额降至1400元、税率降为3%，个税仅约42元、到手约8358元。"}
+    },
+    {
+      "@type": "Question",
+      "name": "个税起征点是多少？",
+      "acceptedAnswer": {"@type": "Answer", "text": "目前工资薪金个人所得税起征点（基本减除费用）为每月5000元，即每年6万元。应纳税所得额=税前工资−5000−五险一金个人部分−专项附加扣除。按本工具默认参数（月薪1.5万、五险一金2400、专项附加2000）：应纳税所得额=5600元，适用10%税率，每月应缴个税约350元、到手约12250元。"}
+    },
+    {
+      "@type": "Question",
+      "name": "专项附加扣除有哪些？",
+      "acceptedAnswer": {"@type": "Answer", "text": "共7项：子女教育（每个子女每月2000元）、3岁以下婴幼儿照护（每个每月2000元）、继续教育（学历每月400元、职业资格取证当年3600元）、住房贷款利息（首套房贷每月1000元、最长240个月）、住房租金（每月1500/1100/800元，与房贷利息二选一）、赡养老人（每月最高3000元）、大病医疗（年度限额8万元据实扣除）。"}
+    },
+    {
+      "@type": "Question",
+      "name": "年终奖怎么扣税？",
+      "acceptedAnswer": {"@type": "Answer", "text": "年终奖可在2027年底前选择单独计税或并入综合所得。单独计税时，年终奖除以12找适用税率，再按奖金总额乘税率减速扣数计算。如年终奖3万元：30000÷12=2500元，适用3%税率，应缴税=30000×3%=900元。10万元年终奖：适用10%税率、速扣210，应缴税=100000×10%−210=9790元。"}
+    },
+    {
+      "@type": "Question",
+      "name": "社保公积金算不算个税？",
+      "acceptedAnswer": {"@type": "Answer", "text": "五险一金个人缴纳部分在计算个税时可以扣除，不计入应纳税所得额。例如月薪1.5万、五险一金2400元：不计社保时应纳税所得额=10000元、个税约790元；扣除社保后应纳税所得额=7600元、个税约550元，每月少交约240元。单位缴纳部分不在扣除范围。"}
+    }
+  ]
+}
+</script>
+<script>
+var BRACKETS=[
+  [3000,.03,0],[12000,.10,210],[25000,.20,1410],[35000,.25,2660],
+  [55000,.30,4410],[80000,.35,7160],[Infinity,.45,15160]
+];
+function fmt(n){return Math.round(n).toLocaleString('zh-CN');}
+function calc(){
+  var sal=parseFloat(document.getElementById('salary').value)||0;
+  var ins=parseFloat(document.getElementById('insurance').value)||0;
+  var sp=parseFloat(document.getElementById('special').value)||0;
+  var taxable=Math.max(0,sal-5000-ins-sp), tax=0, rate=0, quick=0;
+  for(var i=0;i<BRACKETS.length;i++){
+    if(taxable<=BRACKETS[i][0]){rate=BRACKETS[i][1];quick=BRACKETS[i][2];break;}
+  }
+  tax=Math.max(0,taxable*rate-quick);
+  var take=sal-ins-tax;
+  document.getElementById('takeHome').textContent=fmt(take);
+  document.getElementById('taxable').textContent=fmt(taxable)+' 元';
+  document.getElementById('rate').textContent=(rate*100)+'%';
+  document.getElementById('tax').textContent=fmt(tax)+' 元';
+  document.getElementById('quick').textContent=fmt(quick)+' 元';
+  document.getElementById('result').classList.add('show');
+}
+document.getElementById('calcBtn').addEventListener('click',calc);
+calc();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://caisuanbao.com/"},
+    {"@type": "ListItem", "position": 2, "name": "工资个税计算器", "item": "https://caisuanbao.com/tools/geshui"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "工资个税计算器",
+  "description": "2026 年工资个人所得税计算器：输入税前工资、五险一金和专项附加扣除，按现行税率表和速算扣除数计算每月应缴个税与到手工资，免费在线使用。",
+  "url": "https://caisuanbao.com/tools/geshui",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"},
+  "publisher": {"@type": "Organization", "name": "实用工具箱"}
+}
+</script>
+</body>
+</html>

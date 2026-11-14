@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>在线图片压缩工具 免费｜JPG/PNG/WebP 无损压缩 - 实用工具箱</title>
+<meta name="description" content="免费在线图片压缩工具，支持JPG、PNG、WebP格式，可调节压缩质量，批量压缩图片减小体积，全程浏览器本地处理不上传服务器，隐私安全。">
+<link rel="canonical" href="https://caisuanbao.com/tools/img-compress">
+<link rel="stylesheet" href="../css/style.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在线图片压缩工具 免费｜JPG/PNG/WebP 无损压缩 - 实用工具箱">
+<meta property="og:description" content="免费在线压缩JPG/PNG/WebP图片，可调质量，本地处理不上传。">
+<meta property="og:url" content="https://caisuanbao.com/tools/img-compress">
+<meta property="og:image" content="https://caisuanbao.com/og-image.jpg">
+<meta property="og:site_name" content="实用工具箱">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="在线图片压缩工具 免费 - 实用工具箱">
+<meta name="twitter:description" content="免费在线压缩JPG/PNG/WebP图片，本地处理不上传。">
+<meta name="twitter:image" content="https://caisuanbao.com/og-image.jpg">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="../index.html"><span class="logo-badge">算</span><span>实用工具箱<small>免费在线实用工具</small></span></a>
+    <nav class="nav-links"><a href="../index.html">首页</a><a href="fangdai">房贷计算</a><a href="geshui">个税计算</a><a href="https://caisuanbao.com/tools/shebao">五险一金</a></nav>
+  </div>
+</header>
+<main class="container">
+  <div class="crumb"><a href="../index.html">首页</a> / 图片压缩</div>
+  <div class="tool-head">
+    <h1>在线图片压缩</h1>
+    <p>压缩 JPG / PNG / WebP 图片，减小体积，画质可调，本地处理不上传</p>
+  </div>
+  <section class="ai-answer" style="margin:18px 0 22px;padding:16px 18px;border-radius:10px;background:#f0f7ff;border-left:4px solid #2b6cb8">
+    <h2 style="margin:0 0 8px;font-size:17px">图片怎么压缩到200KB以内还保持清晰？</h2>
+    <p style="margin:0;line-height:1.8"><b>先转WebP（同等画质通常比JPG小25%~35%），再把分辨率降到实际需要的宽度，最后调低压缩质量直到满足200KB</b>。本工具默认质量80，JPG照片压到200KB以内通常仍清晰；全程浏览器本地处理，图片不上传服务器。</p>
+  </section>
+  <div class="tool-layout">
+    <div>
+      <div class="panel">
+        <div class="drop-zone" id="dropZone" style="border:2px dashed #cbd5e1;border-radius:12px;padding:40px 20px;text-align:center;cursor:pointer;transition:.2s">
+          <div style="font-size:40px">📤</div>
+          <p style="margin:10px 0 4px;font-weight:600">点击或拖拽图片到此处</p>
+          <p style="margin:0;font-size:.85rem;color:#64748b">支持 JPG / PNG / WebP，最大 20MB</p>
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden>
+        </div>
+        <div class="form-row" style="margin-top:18px">
+          <label>压缩质量：<span id="qualityVal">80</span>%</label>
+          <input type="range" id="quality" min="1" max="100" value="80" style="width:100%">
+        </div>
+        <div class="two-col" style="margin-top:14px">
+          <div class="form-row">
+            <label>输出格式</label>
+            <select id="format" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem">
+              <option value="image/jpeg">JPG</option>
+              <option value="image/webp">WebP（更小）</option>
+              <option value="image/png">PNG</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" id="downloadBtn" disabled style="margin-top:14px">下载压缩后的图片</button>
+        <div id="resultArea" style="display:none;margin-top:20px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div style="text-align:center">
+              <p style="font-size:.85rem;color:#64748b;margin:0 0 6px">原图</p>
+              <div style="border:1px solid #e2e8f0;border-radius:8px;padding:8px;background:#f8fafc">
+                <img id="origImg" style="max-width:100%;border-radius:4px">
+                <p style="font-size:.8rem;margin:6px 0 0" id="origSize"></p>
+              </div>
+            </div>
+            <div style="text-align:center">
+              <p style="font-size:.85rem;color:#64748b;margin:0 0 6px">压缩后</p>
+              <div style="border:1px solid #e2e8f0;border-radius:8px;padding:8px;background:#f8fafc">
+                <img id="compImg" style="max-width:100%;border-radius:4px">
+                <p style="font-size:.8rem;margin:6px 0 0" id="compSize"></p>
+              </div>
+            </div>
+          </div>
+          <div class="result-box show" style="margin-top:16px">
+            <div class="result-main"><div class="k">压缩率</div><div class="v"><span id="ratio">0</span><small>%</small></div></div>
+          </div>
+        </div>
+      </div>
+      <section class="richtext">
+        <h2>图片压缩原理</h2>
+        <p>本工具使用浏览器 Canvas API 对图片进行重新编码。<b>JPG/WebP 为有损压缩</b>：通过降低色彩精度和采样率减小文件体积，质量参数越低体积越小、画质损失越明显；<b>PNG 为无损格式</b>，选择 PNG 输出体积变化不大。<b>推荐设置：</b>照片类用 JPG 质量 70–85，图标/截图用 WebP 质量 80–90，透明背景用 PNG。</p>
+        <h2>为什么要压缩图片？</h2>
+        <p>①<b>网站加载更快</b>：图片占网页体积 60% 以上，压缩后首屏加载时间可缩短 50%；②<b>节省存储和流量</b>：手机流量宝贵，压缩图片减少用户流量消耗；③<b>SEO 友好</b>：Google 和百度都将页面加载速度作为排名因素，压缩图片直接提升 Core Web Vitals 评分；④<b>上传限制</b>：很多平台（微信、报名系统、邮件）对图片大小有限制。</p>
+      </section>
+      <section class="richtext" style="max-width:760px;margin:2rem auto;padding:0 1rem">
+        <h2 class="section-title">常见问题</h2>
+        <div class="faq-list">
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">图片会上传到服务器吗？隐私安全吗？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">不会。所有压缩操作在你的浏览器本地完成，图片不会上传到任何服务器。处理完关闭页面后图片数据即被清除，隐私安全有保障。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">压缩质量设多少最合适？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">一般用途设70–85：照片发朋友圈/微博设70–80，网站展示设80–85，印刷用设90以上。质量低于60会出现明显马赛克，高于90体积急剧增大但画质提升有限。建议边调边看预览。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">JPG、PNG、WebP 选哪个？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">照片/复杂图像选JPG或WebP（体积小）；图标/截图/透明背景选PNG（无损、支持透明）；WebP兼顾体积和画质，比JPG小25%–35%，但旧版浏览器不支持。目前主流浏览器均支持WebP。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">支持批量压缩吗？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">当前版本支持单张图片压缩。如需批量处理，可使用图片处理软件（如XnConvert、RIOT）或命令行工具（ImageMagick）。本工具的优势是免安装、打开即用、隐私安全。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">压缩后图片画质会明显下降吗？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">质量80以上肉眼几乎看不出差异，质量60–80有轻微损失但不影响使用，质量60以下会出现明显色块和模糊。建议压缩前后对比预览，在可接受画质下取最低质量以获得最小体积。</p>
+          </details>
+        </div>
+      </section>
+      <h2 style="margin:26px 0 4px;font-size:18px">相关工具</h2>
+      <div class="related">
+        <a href="img-convert">图片格式转换 →</a>
+        <a href="img-resize">图片裁剪缩放 →</a>
+        <a href="img-watermark">图片加水印 →</a>
+        <a href="img-base64">图片转 Base64 →</a>
+      </div>
+    </div>
+    <aside class="side">
+      </aside>
+  </div>
+  </main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fcol"><b>实用工具箱</b><span style="display:block;max-width:260px">免费、免注册的在线实用工具集合。</span></div>
+      <div class="fcol"><b>贷款工具</b><a href="fangdai">房贷计算器</a><a href="lpr">LPR利率换算</a><a href="tiqian">提前还款</a><a href="chedai">车贷计算器</a></div>
+      <div class="fcol"><b>工资税费</b><a href="geshui">个税计算器</a><a href="huisuan">年度汇算</a><a href="zhuanxiang">专项附加扣除</a><a href="laowu">劳务报酬</a></div>
+      <div class="fcol"><b>理财工具</b><a href="fuli">复利定投</a><a href="cunkuan">存款利息</a><a href="huoqi">活期/通知存款</a><a href="zhenshililv">真实年利率</a></div>
+    </div>
+    <div class="copy">© 2026 实用工具箱 · 计算结果仅供参考</div>
+  </div>
+</footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"图片会上传到服务器吗？","acceptedAnswer":{"@type":"Answer","text":"不会，所有压缩在浏览器本地完成，不上传服务器。"}},{"@type":"Question","name":"压缩质量设多少最合适？","acceptedAnswer":{"@type":"Answer","text":"一般70–85，照片70–80，网站80–85，印刷90以上。"}},{"@type":"Question","name":"JPG、PNG、WebP选哪个？","acceptedAnswer":{"@type":"Answer","text":"照片选JPG/WebP，图标/透明背景选PNG，WebP体积最小。"}},{"@type":"Question","name":"支持批量压缩吗？","acceptedAnswer":{"@type":"Answer","text":"当前支持单张，批量建议用XnConvert或ImageMagick。"}},{"@type":"Question","name":"压缩后画质会明显下降吗？","acceptedAnswer":{"@type":"Answer","text":"质量80以上几乎无差异，60以下会明显模糊。"}}]}</script>
+<script>
+const dropZone=document.getElementById('dropZone'),fileInput=document.getElementById('fileInput');
+const quality=document.getElementById('quality'),qualityVal=document.getElementById('qualityVal');
+const format=document.getElementById('format'),downloadBtn=document.getElementById('downloadBtn');
+const resultArea=document.getElementById('resultArea'),origImg=document.getElementById('origImg'),compImg=document.getElementById('compImg');
+let compBlob=null,compName='';
+quality.oninput=()=>{qualityVal.textContent=quality.value; if(origImg.src) compress();};
+dropZone.onclick=()=>fileInput.click();
+dropZone.ondragover=e=>{e.preventDefault();dropZone.style.background='#eff6ff';};
+dropZone.ondragleave=()=>dropZone.style.background='';
+dropZone.ondrop=e=>{e.preventDefault();dropZone.style.background='';if(e.dataTransfer.files[0])loadFile(e.dataTransfer.files[0]);};
+fileInput.onchange=e=>{if(e.target.files[0])loadFile(e.target.files[0]);};
+function fmtSize(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(2)+' MB';}
+function loadFile(file){
+  if(!file.type.startsWith('image/')){alert('请选择图片文件');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    origImg.src=e.target.result;
+    origImg.onload=()=>compress();
+  };
+  reader.readAsDataURL(file);
+}
+function compress(){
+  const canvas=document.createElement('canvas');
+  canvas.width=origImg.naturalWidth;canvas.height=origImg.naturalHeight;
+  const ctx=canvas.getContext('2d');
+  ctx.drawImage(origImg,0,0);
+  const fmt=format.value;
+  const q=parseInt(quality.value)/100;
+  canvas.toBlob(blob=>{
+    compBlob=blob;
+    compImg.src=URL.createObjectURL(blob);
+    const ext=fmt==='image/jpeg'?'jpg':fmt==='image/webp'?'webp':'png';
+    compName='compressed.'+ext;
+    document.getElementById('origSize').textContent=origImg.naturalWidth+'×'+origImg.naturalHeight;
+    document.getElementById('compSize').textContent=canvas.width+'×'+canvas.height+' · '+fmtSize(blob.size);
+    const origKB=origImg.src.length*0.75;
+    const ratio=origKB>0?((1-blob.size/origKB)*100).toFixed(0):0;
+    document.getElementById('ratio').textContent=ratio;
+    resultArea.style.display='block';
+    downloadBtn.disabled=false;
+  },fmt,q);
+}
+downloadBtn.onclick=()=>{if(!compBlob)return;const a=document.createElement('a');a.href=URL.createObjectURL(compBlob);a.download=compName;a.click();};
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://caisuanbao.com/"},{"@type":"ListItem","position":2,"name":"图片压缩","item":"https://caisuanbao.com/tools/img-compress"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"在线图片压缩工具","description":"免费在线压缩JPG/PNG/WebP图片，可调质量，本地处理不上传服务器。","url":"https://caisuanbao.com/tools/img-compress","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"实用工具箱"}}</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>房贷计算器 2026｜等额本息/等额本金月供与利息明细 - 实用工具箱</title>
+<meta name="description" content="免费在线房贷计算器，支持等额本息和等额本金两种还款方式，输入贷款金额、年限、年利率即可算出每月月供、总利息、还款总额，并附逐月还款明细表。">
+<link rel="canonical" href="https://caisuanbao.com/tools/fangdai">
+<link rel="stylesheet" href="../css/style.css">
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="房贷计算器 2026｜等额本息/等额本金月供与利息明细 - 实用工具箱">
+<meta property="og:description" content="免费在线房贷计算器，支持等额本息和等额本金两种还款方式，输入贷款金额、年限、年利率即可算出每月月供、总利息、还款总额，并附逐月还款明细表。">
+<meta property="og:url" content="https://caisuanbao.com/tools/fangdai">
+<meta property="og:image" content="https://caisuanbao.com/og-image.jpg">
+<meta property="og:site_name" content="实用工具箱">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="房贷计算器 2026｜等额本息/等额本金月供与利息明细 - 实用工具箱">
+<meta name="twitter:description" content="免费在线房贷计算器，支持等额本息和等额本金两种还款方式，输入贷款金额、年限、年利率即可算出每月月供、总利息、还款总额，并附逐月还款明细表。">
+<meta name="twitter:image" content="https://caisuanbao.com/og-image.jpg">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="../index.html">
+      <span class="logo-badge">算</span>
+      <span>实用工具箱<small>免费在线实用工具</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html">首页</a>
+      <a href="fangdai">房贷计算</a>
+      <a href="geshui">个税计算</a>
+      <a href="https://caisuanbao.com/tools/shebao">五险一金</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="crumb"><a href="../index.html">首页</a> / 房贷计算器</div>
+  <div class="tool-head">
+    <h1>房贷计算器</h1>
+    <p>等额本息 / 等额本金两种方式，含逐月还款明细，2026 年最新年利率可自行修改</p>
+  </div>
+
+  <section class="ai-answer" style="margin:18px 0 22px;padding:16px 18px;border-radius:10px;background:#f0f7ff;border-left:4px solid #2b6cb8">
+    <h2 style="margin:0 0 8px;font-size:17px">房贷100万30年月供多少钱？</h2>
+    <p style="margin:0;line-height:1.8"><b>按页面默认参数（贷款100万、30年、年利率3.3%），等额本息月供约4380元，30年总利息约57.7万元</b>；若选等额本金，首月约5528元、逐月递减，总利息约49.6万元。等额本息月供固定便于规划，等额本金总利息更少。</p>
+  </section>
+
+  <div class="tool-layout">
+    <div>
+      <div class="panel">
+        <div class="form-row">
+          <label>贷款金额</label>
+          <div class="input-suffix"><input type="number" id="amount" value="1000000" min="1" step="10000"><span class="unit">元</span></div>
+        </div>
+        <div class="two-col">
+          <div class="form-row">
+            <label>贷款年限</label>
+            <div class="input-suffix"><input type="number" id="years" value="30" min="1" max="40" step="1"><span class="unit">年</span></div>
+          </div>
+          <div class="form-row">
+            <label>年利率 <span class="hint">（商贷/公积金可改）</span></label>
+            <div class="input-suffix"><input type="number" id="rate" value="3.3" min="0.1" max="15" step="0.01"><span class="unit">%</span></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>还款方式</label>
+          <div class="radio-row">
+            <label><input type="radio" name="way" value="bx" checked><span>等额本息</span></label>
+            <label><input type="radio" name="way" value="bj"><span>等额本金</span></label>
+          </div>
+        </div>
+        <button class="btn" id="calcBtn">开始计算</button>
+
+        <div class="result-box" id="result">
+          <div class="result-main">
+            <div class="k" id="mainKey">每月月供（等额本息）</div>
+            <div class="v"><span id="monthly">0</span> <small>元/月</small></div>
+          </div>
+          <div class="kv-list">
+            <div class="kv"><span class="k">还款总额</span><span class="v" id="totalPay">0 元</span></div>
+            <div class="kv"><span class="k">支付利息</span><span class="v" id="totalInt">0 元</span></div>
+            <div class="kv"><span class="k">还款月数</span><span class="v" id="months">0 期</span></div>
+            <div class="kv"><span class="k" id="extraK">每月递减</span><span class="v" id="extra">—</span></div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="schedule" id="sched">
+              <thead><tr><th>期数</th><th>月供</th><th>本金</th><th>利息</th><th>剩余本金</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="note">提示：结果按整笔贷款、按月复利计算，未计入 LPR 浮动、提前还款与各类费用折扣，实际金额以银行合同为准。</div>
+        </div>
+      </div>
+
+      <section class="richtext">
+        <h2>等额本息和等额本金怎么选？</h2>
+        <p><b>等额本息</b>：每月还款额固定，前期利息占比高、本金占比低，便于安排家庭现金流，适合收入稳定、打算长期持有的购房者。</p>
+        <p><b>等额本金</b>：每月偿还的本金相同，利息逐月递减，因此月供越还越少；总利息更少，但开头几期压力大，适合当前收入较高或计划提前还款的人。</p>
+        <h2>2026 年房贷利率大概是多少？</h2>
+        <p>商业贷款利率随 LPR 浮动，各地、各银行加点不同；公积金贷款利率显著低于商贷（首套通常在 2.6%–3.1% 区间）。本工具利率可自行修改，按银行给你的实际报价填入即可。</p>
+      </section>
+
+      <section class="richtext faq">
+        <h2>常见问题</h2>
+        <details>
+          <summary>房贷利息是怎么算出来的？</summary>
+          <p>等额本息月供 = 贷款本金 × 月利率 × (1+月利率)^期数 ÷ ((1+月利率)^期数 − 1)；等额本金每月本金 = 本金 ÷ 期数，利息 = 剩余本金 × 月利率，月供逐月递减。本工具即按上述标准公式计算，并列出每一期的本金、利息与剩余本金。</p>
+        </details>
+        <details>
+          <summary>贷款 100 万、30 年、年利率 3.3%，月供是多少？</summary>
+          <p>按等额本息计算，月供约为 4380 元（精确 4379.55 元），30 年总利息约 57.7 万元；按等额本金计算，首月月供约 5528 元，之后每月递减约 7.64 元，总利息约 49.6 万元。把本工具默认数值改成你自己的金额、年限和利率即可得到精确结果。</p>
+        </details>
+        <details>
+          <summary>等额本息和等额本金哪个更划算？</summary>
+          <p>没有绝对答案：等额本金总利息更少，但前期月供高、压力大，适合当前收入较高或打算提前还款的人；等额本息每月还款额固定，便于安排家庭现金流，适合收入稳定、长期持有的人。两种方式的完整还款明细都可以在上方表格中逐月对比。</p>
+        </details>
+        <details>
+          <summary>LPR 下调后，我的房贷月供什么时候减少？</summary>
+          <p>不会立刻变。多数房贷合同约定每年在「重定价日」按最新 LPR 重新定价，重定价日通常是每年 1 月 1 日，或贷款发放日的对应日期，具体以你的贷款合同为准。重定价后次月起按新利率还款。</p>
+        </details>
+        <details>
+          <summary>提前还款选缩短年限还是减少月供？</summary>
+          <p>若你的投资理财收益率稳定高于贷款利率，提前还款不一定划算；决定提前还款时，「缩短年限」节省的利息通常明显多于「减少月供」，而「减少月供」能立刻减轻每月现金流压力。可以用我们的<a href="tiqian">提前还款计算器</a>对比两种方案省息多少。</p>
+        </details>
+      </section>
+
+      <h2 style="margin:26px 0 4px;font-size:18px">相关工具</h2>
+      <div class="related">
+        <a href="tiqian">提前还款计算器 →</a>
+        <a href="gongjijin">公积金贷款额度计算器 →</a>
+        <a href="zuhedai">组合贷款计算器 →</a>
+        <a href="zulin">租金换算与租售比 →</a>
+        <a href="zujinhuibaolv">租金回报率计算器 →</a>
+        <a href="fuli">复利定投计算器 →</a>
+      </div>
+    </div>
+
+    <aside class="side">
+      </aside>
+  </div>
+
+  </main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fcol"><b>实用工具箱</b><span style="display:block;max-width:260px">免费、免注册的在线实用工具集合。</span></div>
+      <div class="fcol"><b>贷款工具</b><a href="fangdai">房贷计算器</a><a href="tiqian">提前还款</a><a href="chedai">车贷计算器</a><a href="gongjijin">公积金额度</a><a href="zuhedai">组合贷款</a><a href="xinyongka">信用卡分期</a></div>
+      <div class="fcol"><b>工资税费</b><a href="geshui">个税计算器</a><a href="zhuanxiang">专项附加扣除</a><a href="laowu">劳务报酬</a><a href="gaochou">稿酬个税</a><a href="jingying">经营所得</a><a href="lizhi">离职补偿金</a><a href="jiangjin">年终奖</a><a href="https://caisuanbao.com/tools/shebao">五险一金</a></div>
+      <div class="fcol"><b>理财工具</b><a href="fuli">复利定投</a><a href="cunkuan">存款利息</a><a href="huoqi">活期/通知存款</a><a href="zhenshililv">真实年利率</a><a href="lilvhuansuan">利率换算</a><a href="zujinhuibaolv">租金回报率</a><a href="zulin">租金换算</a></div>
+    </div>
+    <div class="copy">© 2026 实用工具箱 · 计算结果仅供参考</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "房贷利息是怎么算出来的？",
+      "acceptedAnswer": {"@type": "Answer", "text": "等额本息月供 = 贷款本金 × 月利率 × (1+月利率)^期数 ÷ ((1+月利率)^期数 − 1)；等额本金每月本金 = 本金 ÷ 期数，利息 = 剩余本金 × 月利率，月供逐月递减。本工具即按上述标准公式计算，并列出每一期的本金、利息与剩余本金。"}
+    },
+    {
+      "@type": "Question",
+      "name": "贷款100万、30年、年利率3.3%，月供是多少？",
+      "acceptedAnswer": {"@type": "Answer", "text": "按等额本息计算，月供约为4380元（精确4379.55元），30年总利息约57.7万元；按等额本金计算，首月月供约5528元，之后每月递减约7.64元，总利息约49.6万元。把本工具默认数值改成你自己的金额、年限和利率即可得到精确结果。"}
+    },
+    {
+      "@type": "Question",
+      "name": "等额本息和等额本金哪个更划算？",
+      "acceptedAnswer": {"@type": "Answer", "text": "没有绝对答案：等额本金总利息更少，但前期月供高、压力大，适合当前收入较高或打算提前还款的人；等额本息每月还款额固定，便于安排家庭现金流，适合收入稳定、长期持有的人。两种方式的完整还款明细都可以在上方表格中逐月对比。"}
+    },
+    {
+      "@type": "Question",
+      "name": "LPR下调后，我的房贷月供什么时候减少？",
+      "acceptedAnswer": {"@type": "Answer", "text": "不会立刻变。多数房贷合同约定每年在重定价日按最新LPR重新定价，重定价日通常是每年1月1日，或贷款发放日的对应日期，具体以你的贷款合同为准。重定价后次月起按新利率还款。"}
+    },
+    {
+      "@type": "Question",
+      "name": "提前还款选缩短年限还是减少月供？",
+      "acceptedAnswer": {"@type": "Answer", "text": "若你的投资理财收益率稳定高于贷款利率，提前还款不一定划算；决定提前还款时，缩短年限节省的利息通常明显多于减少月供，而减少月供能立刻减轻每月现金流压力。可以用提前还款计算器对比两种方案省息多少。"}
+    }
+  ]
+}
+</script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('zh-CN');}
+function calc(){
+  var P=parseFloat(document.getElementById('amount').value);
+  var y=parseInt(document.getElementById('years').value,10);
+  var ar=parseFloat(document.getElementById('rate').value);
+  var way=document.querySelector('input[name=way]:checked').value;
+  if(!(P>0)||!(y>0)||!(ar>0)){alert('请填写正确的贷款金额、年限和利率');return;}
+  var n=y*12, r=ar/100/12, rows=[], totalPay=0, totalInt=0, monthly;
+  var tbody=document.querySelector('#sched tbody'); tbody.innerHTML='';
+  if(way==='bx'){
+    monthly=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    var rem=P;
+    for(var i=1;i<=n;i++){
+      var interest=rem*r, principal=monthly-interest;
+      if(i===n){principal=rem; var pay=principal+interest;} else {var pay=monthly;}
+      rem=Math.max(0,rem-principal);
+      totalPay+=pay; totalInt+=interest;
+      rows.push([i,pay,principal,interest,rem]);
+    }
+    document.getElementById('mainKey').textContent='每月月供（等额本息，固定）';
+    document.getElementById('extraK').textContent='每月还款';
+    document.getElementById('extra').textContent=fmt(monthly)+' 元';
+  }else{
+    var baseP=P/n, rem=P, firstPay=0, lastPay=0, decr=0;
+    for(var i=1;i<=n;i++){
+      var interest=rem*r, principal=baseP;
+      if(i===n) principal=rem;
+      var pay=principal+interest; rem=Math.max(0,rem-principal);
+      if(i===1){firstPay=pay;decr=baseP*r;}
+      if(i===n)lastPay=pay;
+      totalPay+=pay; totalInt+=interest;
+      rows.push([i,pay,principal,interest,rem]);
+    }
+    monthly=firstPay;
+    document.getElementById('mainKey').textContent='首月月供（等额本金，逐月递减）';
+    document.getElementById('extraK').textContent='末月月供';
+    document.getElementById('extra').textContent=fmt(lastPay)+' 元';
+  }
+  document.getElementById('monthly').textContent=fmt(monthly);
+  document.getElementById('totalPay').textContent=fmt(totalPay)+' 元';
+  document.getElementById('totalInt').textContent=fmt(totalInt)+' 元';
+  document.getElementById('months').textContent=n+' 期';
+  var html='';
+  for(var i=0;i<rows.length;i++){
+    var d=rows[i];
+    html+='<tr><td>'+d[0]+'</td><td>'+fmt(d[1])+'</td><td>'+fmt(d[2])+'</td><td>'+fmt(d[3])+'</td><td>'+fmt(d[4])+'</td></tr>';
+  }
+  tbody.innerHTML=html;
+  document.getElementById('result').classList.add('show');
+}
+document.getElementById('calcBtn').addEventListener('click',calc);
+document.getElementById('amount').addEventListener('keydown',function(e){if(e.key==='Enter')calc();});
+calc();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "首页", "item": "https://caisuanbao.com/"},
+    {"@type": "ListItem", "position": 2, "name": "房贷计算器", "item": "https://caisuanbao.com/tools/fangdai"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "房贷计算器",
+  "description": "免费在线房贷计算器，支持等额本息和等额本金两种还款方式，输入贷款金额、年限、年利率即可算出每月月供、总利息、还款总额，并附逐月还款明细表。",
+  "url": "https://caisuanbao.com/tools/fangdai",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"},
+  "publisher": {"@type": "Organization", "name": "实用工具箱"}
+}
+</script>
+</body>
+</html>

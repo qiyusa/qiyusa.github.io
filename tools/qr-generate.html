@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>二维码生成器 在线免费｜文本/链接/WiFi/名片生成二维码 - 实用工具箱</title>
+<meta name="description" content="免费在线二维码生成器，支持文本、网址、WiFi、名片、邮箱、电话生成二维码，可调颜色、尺寸、边距，支持下载 PNG 图片，浏览器本地生成不上传。">
+<link rel="canonical" href="https://caisuanbao.com/tools/qr-generate">
+<link rel="stylesheet" href="../css/style.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="二维码生成器 在线免费｜文本/链接/WiFi/名片生成二维码 - 实用工具箱">
+<meta property="og:description" content="免费在线生成文本/链接/WiFi/名片二维码，可调颜色尺寸。">
+<meta property="og:url" content="https://caisuanbao.com/tools/qr-generate">
+<meta property="og:image" content="https://caisuanbao.com/og-image.jpg">
+<meta property="og:site_name" content="实用工具箱">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="二维码生成器 在线免费 - 实用工具箱">
+<meta name="twitter:description" content="免费在线生成文本/链接/WiFi/名片二维码，可调颜色尺寸。">
+<meta name="twitter:image" content="https://caisuanbao.com/og-image.jpg">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="../index.html"><span class="logo-badge">算</span><span>实用工具箱<small>免费在线实用工具</small></span></a>
+    <nav class="nav-links"><a href="../index.html">首页</a><a href="fangdai">房贷计算</a><a href="geshui">个税计算</a><a href="https://caisuanbao.com/tools/shebao">五险一金</a></nav>
+  </div>
+</header>
+<main class="container">
+  <div class="crumb"><a href="../index.html">首页</a> / 二维码生成器</div>
+  <div class="tool-head">
+    <h1>二维码生成器</h1>
+    <p>文本、网址、WiFi、名片一键生成二维码，可调颜色尺寸，支持下载</p>
+  </div>
+  <section class="ai-answer" style="margin:18px 0 22px;padding:16px 18px;border-radius:10px;background:#f0f7ff;border-left:4px solid #2b6cb8">
+    <h2 style="margin:0 0 8px;font-size:17px">怎么免费生成一个能用的二维码？</h2>
+    <p style="margin:0;line-height:1.8"><b>输入网址或文本即可实时免费生成二维码，支持WiFi、名片等类型，可自定义颜色并下载PNG</b>。二维码容错率最高30%（H级），加Logo建议选Q或H级；印刷用途建议放大尺寸或转成SVG矢量格式，避免放大失真。全程本地生成，内容不上传。</p>
+  </section>
+  <div class="tool-layout">
+    <div>
+      <div class="panel">
+        <div class="form-row">
+          <label>内容类型</label>
+          <select id="qrType" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem">
+            <option value="text">文本 / 网址</option>
+            <option value="url">网址（URL）</option>
+            <option value="wifi">WiFi</option>
+            <option value="vcard">名片（vCard）</option>
+            <option value="email">邮箱</option>
+            <option value="tel">电话</option>
+          </select>
+        </div>
+        <div id="textFields" class="form-row" style="margin-top:14px">
+          <label>文本内容</label>
+          <textarea id="content" placeholder="输入文本或网址" style="width:100%;height:80px;padding:.7rem;border:1px solid #cbd5e1;border-radius:8px;font-size:1rem;resize:vertical">https://caisuanbao.com</textarea>
+        </div>
+        <div id="wifiFields" style="display:none;margin-top:14px" class="two-col">
+          <div class="form-row"><label>WiFi 名称(SSID)</label><input type="text" id="ssid" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+          <div class="form-row"><label>密码</label><input type="text" id="wifipwd" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+          <div class="form-row"><label>加密方式</label><select id="enc" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"><option>WPA</option><option>WEP</option><option>nopass</option></select></div>
+        </div>
+        <div id="vcardFields" style="display:none;margin-top:14px" class="two-col">
+          <div class="form-row"><label>姓名</label><input type="text" id="vcName" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+          <div class="form-row"><label>电话</label><input type="text" id="vcPhone" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+          <div class="form-row"><label>邮箱</label><input type="text" id="vcEmail" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+          <div class="form-row"><label>公司</label><input type="text" id="vcOrg" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+        </div>
+        <div id="emailFields" style="display:none;margin-top:14px" class="two-col">
+          <div class="form-row"><label>邮箱地址</label><input type="email" id="emailAddr" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+          <div class="form-row"><label>主题（选填）</label><input type="text" id="emailSubj" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"></div>
+        </div>
+        <div id="telFields" style="display:none;margin-top:14px" class="form-row">
+          <label>电话号码</label>
+          <input type="tel" id="telNum" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px">
+        </div>
+        <h3 style="margin:18px 0 12px;font-size:1rem;color:var(--ink-2)">样式设置</h3>
+        <div class="two-col">
+          <div class="form-row"><label>前景色</label><input type="color" id="fgColor" value="#000000" style="width:100%;height:42px;border:1px solid #cbd5e1;border-radius:8px;cursor:pointer"></div>
+          <div class="form-row"><label>背景色</label><input type="color" id="bgColor" value="#ffffff" style="width:100%;height:42px;border:1px solid #cbd5e1;border-radius:8px;cursor:pointer"></div>
+          <div class="form-row"><label>尺寸：<span id="sizeVal">300</span>px</label><input type="range" id="qrSize" min="100" max="600" value="300" style="width:100%"></div>
+          <div class="form-row"><label>容错级别</label><select id="ecLevel" style="width:100%;padding:.55rem;border:1px solid #cbd5e1;border-radius:8px"><option value="L">L（7%）</option><option value="M" selected>M（15%）</option><option value="Q">Q（25%）</option><option value="H">H（30%）</option></select></div>
+        </div>
+        <button class="btn" id="genBtn" style="margin-top:14px">生成二维码</button>
+        <div id="qrResult" style="display:none;margin-top:20px;text-align:center">
+          <div id="qrcode" style="display:inline-block;padding:16px;background:#fff;border:1px solid #e2e8f0;border-radius:8px"></div>
+          <div><button class="btn" id="downloadBtn" style="margin-top:12px">下载二维码 PNG</button></div>
+        </div>
+      </div>
+      <section class="richtext">
+        <h2>二维码能存什么？</h2>
+        <p>二维码可存储文本、网址、WiFi 密码、名片、邮箱、电话等信息。手机扫码后自动识别：扫网址直接跳转浏览器，扫 WiFi 自动连接，扫名片自动保存到通讯录，扫邮箱自动打开邮件。<b>容量限制</b>：数字型约 7000 字符，字节型约 4000 字符，中文约 1000 字，内容越多二维码越密集、越难识别。</p>
+        <h2>容错级别怎么选？</h2>
+        <p>容错级别决定二维码被遮挡/污损后仍能识别的能力：<b>L(7%)</b> 容量最大、最清晰；<b>M(15%)</b> 平衡选择；<b>Q(25%)</b> 适合需要加 Logo 的场景；<b>H(30%)</b> 容错最高，适合印刷在可能污损的表面。一般用途选 M，加 Logo 选 Q 或 H。</p>
+      </section>
+      <section class="richtext" style="max-width:760px;margin:2rem auto;padding:0 1rem">
+        <h2 class="section-title">常见问题</h2>
+        <div class="faq-list">
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">二维码颜色有什么讲究？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">前景色和背景色需要有足够对比度，深色前景+浅色背景最易识别。避免浅色前景+深色背景，或两种相近颜色。黑色前景+白色背景是最稳妥的组合。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">二维码能加 Logo 吗？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">可以，但需要选 Q 或 H 容错级别，Logo 面积不超过二维码的 30%。建议用本工具的「二维码美化」页面，可自动在中心添加 Logo 并保证可识别。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">WiFi 二维码怎么用？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">生成 WiFi 二维码后，访客用手机扫一扫即可自动连接 WiFi，无需手动输入密码。Android 和 iOS 11+ 均支持。注意：公共场所建议用访客网络，不要泄露主网络密码。</p>
+          </details>
+          <details class="faq-item" style="border:1px solid #e2e8f0;border-radius:8px;margin:.5rem 0;padding:.8rem 1rem;background:#fff">
+            <summary style="cursor:pointer;font-weight:600;font-size:1.02rem">生成的内容会上传吗？</summary>
+            <p style="margin-top:.6rem;color:#475569;line-height:1.7">不会。二维码在浏览器本地通过 qrcodejs 库生成，不上传服务器，关闭页面后数据即清除。</p>
+          </details>
+        </div>
+      </section>
+      <h2 style="margin:26px 0 4px;font-size:18px">相关工具</h2>
+      <div class="related">
+        <a href="qr-beautify">二维码美化（加 Logo）→</a>
+        <a href="qr-decode">二维码解码（扫图识别）→</a>
+      </div>
+    </div>
+    <aside class="side">
+      </aside>
+  </div>
+  </main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fcol"><b>实用工具箱</b><span style="display:block;max-width:260px">免费、免注册的在线实用工具集合。</span></div>
+      <div class="fcol"><b>贷款工具</b><a href="fangdai">房贷计算器</a><a href="lpr">LPR利率换算</a><a href="tiqian">提前还款</a><a href="chedai">车贷计算器</a></div>
+      <div class="fcol"><b>工资税费</b><a href="geshui">个税计算器</a><a href="huisuan">年度汇算</a><a href="zhuanxiang">专项附加扣除</a><a href="laowu">劳务报酬</a></div>
+      <div class="fcol"><b>理财工具</b><a href="fuli">复利定投</a><a href="cunkuan">存款利息</a><a href="huoqi">活期/通知存款</a><a href="zhenshililv">真实年利率</a></div>
+    </div>
+    <div class="copy">© 2026 实用工具箱</div>
+  </div>
+</footer>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"二维码颜色有什么讲究？","acceptedAnswer":{"@type":"Answer","text":"前景色和背景色需有足够对比度，黑前景+白背景最稳妥。"}},{"@type":"Question","name":"二维码能加Logo吗？","acceptedAnswer":{"@type":"Answer","text":"可以，选Q或H容错，Logo不超过30%面积。"}},{"@type":"Question","name":"WiFi二维码怎么用？","acceptedAnswer":{"@type":"Answer","text":"扫一扫自动连接WiFi，Android和iOS 11+均支持。"}},{"@type":"Question","name":"生成内容会上传吗？","acceptedAnswer":{"@type":"Answer","text":"不会，本地qrcodejs库生成不上传。"}}]}</script>
+<script>
+const qrType=document.getElementById('qrType');
+const fields={text:'textFields',url:'textFields',wifi:'wifiFields',vcard:'vcardFields',email:'emailFields',tel:'telFields'};
+qrType.onchange=()=>{Object.values(fields).forEach(id=>document.getElementById(id).style.display='none');document.getElementById(fields[qrType.value]).style.display='';};
+document.getElementById('qrSize').oninput=e=>document.getElementById('sizeVal').textContent=e.target.value;
+function getContent(){
+  const t=qrType.value;
+  if(t==='text'||t==='url')return document.getElementById('content').value;
+  if(t==='wifi')return 'WIFI:T:'+document.getElementById('enc').value+';S:'+document.getElementById('ssid').value+';P:'+document.getElementById('wifipwd').value+';;';
+  if(t==='vcard')return 'BEGIN:VCARD\nVERSION:3.0\nFN:'+document.getElementById('vcName').value+'\nTEL:'+document.getElementById('vcPhone').value+'\nEMAIL:'+document.getElementById('vcEmail').value+'\nORG:'+document.getElementById('vcOrg').value+'\nEND:VCARD';
+  if(t==='email')return 'mailto:'+document.getElementById('emailAddr').value+'?subject='+encodeURIComponent(document.getElementById('emailSubj').value);
+  if(t==='tel')return 'tel:'+document.getElementById('telNum').value;
+}
+let qrcode=null;
+document.getElementById('genBtn').onclick=()=>{
+  const content=getContent();
+  if(!content.trim())return alert('请输入内容');
+  const box=document.getElementById('qrcode');box.innerHTML='';
+  const size=parseInt(document.getElementById('qrSize').value);
+  qrcode=new QRCode(box,{
+    text:content,width:size,height:size,
+    colorDark:document.getElementById('fgColor').value,
+    colorLight:document.getElementById('bgColor').value,
+    correctLevel:QRCode.CorrectLevel[document.getElementById('ecLevel').value]
+  });
+  document.getElementById('qrResult').style.display='block';
+};
+document.getElementById('downloadBtn').onclick=()=>{
+  const canvas=document.querySelector('#qrcode canvas');
+  if(!canvas)return alert('请先生成二维码');
+  const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='qrcode.png';a.click();
+};
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://caisuanbao.com/"},{"@type":"ListItem","position":2,"name":"二维码生成器","item":"https://caisuanbao.com/tools/qr-generate"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"二维码生成器","description":"免费在线生成文本/网址/WiFi/名片二维码，可调颜色尺寸，支持下载。","url":"https://caisuanbao.com/tools/qr-generate","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"实用工具箱"}}</script>
+</body>
+</html>
